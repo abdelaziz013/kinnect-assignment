@@ -1,0 +1,36 @@
+.game{
+    &__wrapper{
+        position:relative;
+        top:30vh;
+    }
+
+    &__numbers__wrapper{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin-top:60px;
+
+        &--number{
+            width:40px;
+            height:40px;
+            border:1px solid grey;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+
+    }
+
+    &__answer__wrapper{
+        display:flex;
+        & button{
+            margin-left:10px;
+        }
+    }
+    &__try-again{
+
+        color:red;
+    }
+
+}

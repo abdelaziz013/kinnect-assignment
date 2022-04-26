@@ -1,0 +1,67 @@
+
+
+<div class="container game__wrapper">
+  <div class="row align-items-center justify-content-center">
+    <div class="d-grid gap-2 col-2 mx-auto" *ngIf="!startGame">
+      <button
+        (click)="generateNumbers()"
+        type="button"
+        class="btn btn-primary btn-lg"
+      >
+        Start playing
+      </button>
+    </div>
+  </div>
+  <div class="row justify-content-center"  *ngIf="startGame">
+    <div class="game__numbers__wrapper">
+      <div class="game__numbers__wrapper--number">{{ firstNumber }}</div>
+      <div><img src="assets/svg/plus.svg" /></div>
+      <div class="game__numbers__wrapper--number">{{ secondNumber }}</div>
+      <div><img src="assets/svg/equal.svg" /></div>
+      <div>
+        <form [formGroup]="answerForm" (ngSubmit)="submitAnswer()">
+          <div class="game__answer__wrapper">
+            <input
+              formControlName="answer"
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Your answer"
+              (mousedown)="touch()"
+            />
+            <button type="submit" class="btn btn-outline-info ">Submit</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+
+    <div *ngIf="wrongAnswer" class="mx-auto mt-2" style="width: fit-content" >
+      <p class="small game__try-again">Please Try Again</p>
+    </div>
+
+
+  </div>
+
+  <!-- notification  -->
+  <div *ngIf="correctAnswer || wrongAnswer">
+    <div class="row align-items-center justify-content-center">
+      <div class="d-grid gap-2 col-2 mx-auto mt-5">
+        <button
+          [hidden]="!correctAnswer"
+          type="button"
+          class="btn btn-success btn-lg"
+        >
+          Success
+        </button>
+        <button [hidden]="!wrongAnswer" type="button" class="btn btn-danger">
+          Wrong Answer
+        </button>
+      </div>
+    </div>
+    <div [hidden]="!correctAnswer" class="mx-auto mt-2" style="width: fit-content">
+      <p>{{ timePerAnswer }} seconds per solution</p>
+    </div>
+  </div>
+</div>
