@@ -32,7 +32,7 @@ export class GameComponent implements OnInit {
   generateNumbers() {
     this.startGame = true;
     this.startTime = Date.now();
-    console.log('1=>', this.startTime);
+   
     this.firstNumber = this.gameService.generateRandomNumber();
     this.secondNumber = this.gameService.generateRandomNumber();
   }
